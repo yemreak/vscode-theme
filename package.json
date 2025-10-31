@@ -1,0 +1,56 @@
+{
+	"name": "yemreak-theme",
+	"displayName": "Yemreak Theme",
+	"description": "Theme and syntax highlighting",
+	"version": "1.1.0",
+	"publisher": "yemreak",
+	"engines": {
+		"vscode": "^1.99.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"theme",
+		"syntax",
+		"markdown"
+	],
+	"icon": "icon.png",
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "◆ Yemreak Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/yemreak.json"
+			},
+			{
+				"label": "◇ Yemreak Light",
+				"uiTheme": "vs",
+				"path": "./themes/yemreak-light.json"
+			}
+		]
+	},
+	"scripts": {
+		"compile": "node esbuild.js --production",
+		"watch": "node esbuild.js --watch",
+		"package": "node esbuild.js --production && bunx vsce package",
+		"reinstall": "(code --uninstall-extension yemreak.yemreak-theme 2>/dev/null || true) && bun run package && code --install-extension *.vsix && rm *.vsix"
+	},
+	"devDependencies": {
+		"@types/node": "^20.19.19",
+		"@types/vscode": "1.99.0",
+		"esbuild": "^0.25.10",
+		"typescript": "^5.9.3"
+	},
+	"author": "yemreak",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yemreak/vscode-theme.git"
+	},
+	"type": "commonjs"
+}
